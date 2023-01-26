@@ -53,7 +53,10 @@ const schema = Schema({
     percent_change_movement	:{
         type:String
     },
-    percent_range_movement:{
+    percent_range_up_down_mvmnt:{
+        type:String
+    },
+    percent_range_left_right_mvmnt:{
         type:String
     },
     color_flag:{
@@ -95,6 +98,12 @@ const schema = Schema({
     total_liquidity_in_eth:{
         type:String
     },
+    inital_liquidity_eth:{
+        type:String
+    },
+    inital_liquidity_usd:{
+        type:String
+    }
 
 
     

@@ -93,7 +93,6 @@ exports.subcreated_uniswap_pools = async () => {
       method: 'post',
       url: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2',
       headers: { 
-        'X-API-KEY': 'BQYVYE0zXszpg0WGjGLukNwRlEYGXB04', 
         'Content-Type': 'application/json'
       },
       data : data
@@ -101,10 +100,13 @@ exports.subcreated_uniswap_pools = async () => {
     
    let result = await  axios(config)
    
-  //  console.log({result:result.data.data})
+   console.log({result:result.data})
+
+  //  console.log({result:errors.data})
    return result.data.data.pairs
 
   } catch (error) {
+    console.log({error})
     throw error
   }
 
@@ -248,19 +250,63 @@ exports.getTokenPriceandTotalLiquidity = async (token) => {
 
 
 exports.getContractCreation = async(token)=>{
-  try {
+  // try {
 
+  //   var config = {
+  //     method: 'get',
+  //     url: `https://api.etherscan.io/api?module=contract&action=getcontractcreation&contractaddresses=${token}&apikey=N2FUHGCAJBNN3YS6AVQXJIH7DR4XPTK463`,
+  //     headers: { }
+  //   };
+    
+  //  let {data}= await axios(config);
+  //  return data.result[0]
+  //  console.log({getContractCreation_data:data.result})
+  // } catch (error) {
+  //     throw error
+  // }
+
+  try {
+    var data = JSON.stringify({
+      query: `{
+     mints(orderBy: timestamp, orderDirection: asc,   where: { pair:"${token}"})
+    
+    {
+    pair {token0 {symbol},token1 {symbol}},
+    amount0,
+    amount1,
+    liquidity
+      sender
+      to
+      id
+      transaction {
+        id
+      }
+      amountUSD
+      
+      feeLiquidity
+      logIndex
+      feeTo
+      timestamp
+    }
+    
+    }`,
+      variables: {}
+    });
+    
     var config = {
-      method: 'get',
-      url: `https://api.etherscan.io/api?module=contract&action=getcontractcreation&contractaddresses=${token}&apikey=N2FUHGCAJBNN3YS6AVQXJIH7DR4XPTK463`,
-      headers: { }
+      method: 'post',
+      url: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
     };
     
-   let {data}= await axios(config);
-   return data.result[0]
-   console.log({getContractCreation_data:data.result})
+    let result = await axios(config);
+    console.log(result.data.data,"???")
+    return result.data.data
   } catch (error) {
-      throw error
+    throw error
   }
 }
 
@@ -298,8 +344,8 @@ var config = {
 };
 
  let result = await axios(config)
-  //  console.log({Liquidity24Hour:result.data.data.tokenDayDatas});
-   return result.data.data.tokenDayDatas
+  //  console.log({Liquidity24Hour:result.data.data});
+   return result.data.data
    } catch (error) {
       throw error
    }

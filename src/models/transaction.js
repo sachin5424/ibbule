@@ -17,7 +17,7 @@ const schema = Schema({
     sell:{
         type:String,
     },
-    buy_plush_sell:{
+    buy_plus_sell:{
         type:String,
     },
  
