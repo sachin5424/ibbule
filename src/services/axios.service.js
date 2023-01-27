@@ -3,51 +3,51 @@ var axios = require('axios');
 // step 1   per 1 mint call
 
 
-exports.created_uniswap_pools = async () => {
-  try {
-    var data = {
-      query: `{
-          ethereum {
-            arguments(smartContractAddress: 
-              {is: "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f"},
-              smartContractEvent: {is: "PairCreated"}, 
-              options: {desc: "block.height", limit: 90}) {
-              block {
-                timestamp {
-                  time(format: "%Y-%m-%d %H:%M:%S")
-                }
-                height
-              }
-              argument {
-                name
-              }
-              reference {
-                address
-              }
-            }
-          }
-        }`,
-      variables: {}
-    }
+// exports.created_uniswap_pools = async () => {
+//   try {
+//     var data = {
+//       query: `{
+//           ethereum {
+//             arguments(smartContractAddress: 
+//               {is: "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f"},
+//               smartContractEvent: {is: "PairCreated"}, 
+//               options: {desc: "block.height", limit: 90}) {
+//               block {
+//                 timestamp {
+//                   time(format: "%Y-%m-%d %H:%M:%S")
+//                 }
+//                 height
+//               }
+//               argument {
+//                 name
+//               }
+//               reference {
+//                 address
+//               }
+//             }
+//           }
+//         }`,
+//       variables: {}
+//     }
 
-    var config = {
-      method: 'post',
-      url: 'https://graphql.bitquery.io/',
-      headers: {
-        'X-API-KEY': 'BQYVYE0zXszpg0WGjGLukNwRlEYGXB04',
-        'Content-Type': 'application/json'
-      },
-      data: data
-    };
+//     var config = {
+//       method: 'post',
+//       url: 'https://graphql.bitquery.io/',
+//       headers: {
+//         'X-API-KEY': 'BQYVYE0zXszpg0WGjGLukNwRlEYGXB04',
+//         'Content-Type': 'application/json'
+//       },
+//       data: data
+//     };
 
-    let result = await axios(config)
-    return result.data.data.ethereum
+//     let result = await axios(config)
+//     return result.data.data.ethereum
 
-  } catch (error) {
-    throw error
-  }
+//   } catch (error) {
+//     throw error
+//   }
 
-}
+// }
 
 
 exports.subcreated_uniswap_pools = async () => {
@@ -100,13 +100,13 @@ exports.subcreated_uniswap_pools = async () => {
     
    let result = await  axios(config)
    
-   console.log({result:result.data})
+   //console.log({result:result.data})
 
-  //  console.log({result:errors.data})
+  //  //console.log({result:errors.data})
    return result.data.data.pairs
 
   } catch (error) {
-    console.log({error})
+    //console.log({error})
     throw error
   }
 
@@ -115,56 +115,56 @@ exports.subcreated_uniswap_pools = async () => {
 
 // set 2 
 
-exports.ethPriceInUSD = async () => {
-  try {
-    var data = JSON.stringify({
-      query: `{
-      ethereum(network: bsc) {
-        dexTrades(
-          baseCurrency: {is: "0x2170ed0880ac9a755fd29b2688956bd959f933f8"}
-          quoteCurrency: {is: "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d"}
-          options: {desc: ["block.height", "transaction.index"], limit: 1}
-          date: {}
-        ) {
-          block {
-            height
-            timestamp {
-              time(format: "%Y-%m-%d %H:%M:%S")
-            }
-          }
-          transaction {
-            index
-          }
-          baseCurrency {
-            symbol
-          }
-          quoteCurrency {
-            symbol
-          }
-          quotePrice
-        }
-      }
-    }`,
-      variables: {}
-    });
+// exports.ethPriceInUSD = async () => {
+//   try {
+//     var data = JSON.stringify({
+//       query: `{
+//       ethereum(network: bsc) {
+//         dexTrades(
+//           baseCurrency: {is: "0x2170ed0880ac9a755fd29b2688956bd959f933f8"}
+//           quoteCurrency: {is: "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d"}
+//           options: {desc: ["block.height", "transaction.index"], limit: 1}
+//           date: {}
+//         ) {
+//           block {
+//             height
+//             timestamp {
+//               time(format: "%Y-%m-%d %H:%M:%S")
+//             }
+//           }
+//           transaction {
+//             index
+//           }
+//           baseCurrency {
+//             symbol
+//           }
+//           quoteCurrency {
+//             symbol
+//           }
+//           quotePrice
+//         }
+//       }
+//     }`,
+//       variables: {}
+//     });
 
-    var config = {
-      method: 'post',
-      url: 'https://graphql.bitquery.io/',
-      headers: {
-        'X-API-KEY': 'BQYVYE0zXszpg0WGjGLukNwRlEYGXB04',
-        'Content-Type': 'application/json'
-      },
-      data: data
-    };
+//     var config = {
+//       method: 'post',
+//       url: 'https://graphql.bitquery.io/',
+//       headers: {
+//         'X-API-KEY': 'BQYVYE0zXszpg0WGjGLukNwRlEYGXB04',
+//         'Content-Type': 'application/json'
+//       },
+//       data: data
+//     };
 
-    return axios(config)
+//     return axios(config)
 
 
-  } catch (error) {
-    throw error
-  }
-}
+//   } catch (error) {
+//     throw error
+//   }
+// }
 
 exports.sub_ethPriceInUSD = async () => {
   try {
@@ -200,7 +200,7 @@ exports.sub_ethPriceInUSD = async () => {
 
 exports.getTokenPriceandTotalLiquidity = async (token) => {
   try {
-    console.log({ token })
+    //console.log({ token })
     var data = JSON.stringify({
       query: `{
         pair(id:"${token}"){
@@ -240,7 +240,7 @@ exports.getTokenPriceandTotalLiquidity = async (token) => {
     };
 
     let result = await axios(config)
-    console.log({result:result.data})
+    //console.log({result:result.data})
     return result.data.data.pair
 
   } catch (error) {
@@ -260,7 +260,7 @@ exports.getContractCreation = async(token)=>{
     
   //  let {data}= await axios(config);
   //  return data.result[0]
-  //  console.log({getContractCreation_data:data.result})
+  //  //console.log({getContractCreation_data:data.result})
   // } catch (error) {
   //     throw error
   // }
@@ -303,7 +303,7 @@ exports.getContractCreation = async(token)=>{
     };
     
     let result = await axios(config);
-    console.log(result.data.data,"???")
+    //console.log(result.data.data,"???")
     return result.data.data
   } catch (error) {
     throw error
@@ -344,7 +344,7 @@ var config = {
 };
 
  let result = await axios(config)
-  //  console.log({Liquidity24Hour:result.data.data});
+  //  //console.log({Liquidity24Hour:result.data.data});
    return result.data.data
    } catch (error) {
       throw error
@@ -393,7 +393,7 @@ var config = {
 };
 
 let result = await axios(config)
-// console.log({pair_address:result.data.data.swaps})
+// //console.log({pair_address:result.data.data.swaps})
 return result.data.data.swaps
 
   } catch (error) {

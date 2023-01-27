@@ -45,7 +45,7 @@ const schema = Schema({
         type:String
     },
     macketCap:{
-        type:String
+        type:Number
     },
     bubble_size:{
         type:String
@@ -108,5 +108,10 @@ const schema = Schema({
 
     
 },{ timestamps: true })
+schema.pre("save", function(next) {
+    var self = this;
+    
+    next();
+});
 schema.plugin(AutoIncrement, { inc_field: "token_id" }); // autogenerate network id 
 exports.tokenModel = mongoose.model("token",schema)
