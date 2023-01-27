@@ -31,6 +31,14 @@ app.post('/api/all_data',tokenController.all_token_data)
 
 connection()
 
+app.use(express.static(__dirname + '/bubble'));
+
+app.get('/admin/*', function(req,res) {
+    
+res.sendFile(path.join(__dirname+'/bubble/index.html'));
+});
+
+
 sockets.connect(server)
 sockets.emit('event', { message: 'This is an event!' });
 server.listen(environment.port,()=>{

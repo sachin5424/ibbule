@@ -282,7 +282,10 @@ const sub_save_token_details = async () => {
   }
 }
 
-sub_save_token_details().then((data) => {
+sub_save_token_details().then(async(data) => {
+  if(1==1){
+    await sub_save_token_details()
+  }
 }).catch((err) => {
 })
 
