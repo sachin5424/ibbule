@@ -30,6 +30,7 @@ app.post('/api/all_data',tokenController.all_token_data)
 
 
 connection()
+
 sockets.connect(server)
 sockets.emit('event', { message: 'This is an event!' });
 server.listen(environment.port,()=>{
