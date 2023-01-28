@@ -279,6 +279,7 @@ const sub_save_token_details = async () => {
         }
       }
     }
+    
   } catch (error) {
     name(1)
     throw error
