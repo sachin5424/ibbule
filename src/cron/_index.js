@@ -270,26 +270,35 @@ const sub_save_token_details = async () => {
   console.log({data})
         }
         else {
-          await models.tokenModel.updateOne({ _id: existingData._id }, { ...options });
-          let data = await models.tokenModel.findOne({ _id: existingData._id });
+         let data=  await models.tokenModel.findOneAndUpdate({ _id: existingData._id }, { ...options },{returnOriginal: false});
+         console.log({data,existingData})
+           data = await models.tokenModel.findOne({ _id: existingData._id });
           sockets.emit(`token_update`, data);
+          sockets.emit(`${data._id}`, data);
           console.log({data})
         }
       }
     }
   } catch (error) {
+    name(1)
     throw error
   }
 }
 
-sub_save_token_details().then(async(data) => {
-  if(1==1){
-    await sub_save_token_details()
-  }
-}).catch((err) => {
-})
+// sub_save_token_details().then(async(data) => {
+//   if(1==1){
+//     await sub_save_token_details()
+//   }
+// }).catch((err) => {
+// })
+
+async function name() {
+  await sub_save_token_details()
+  name()
+}
 
 
 
 
 
+name(1)
