@@ -271,7 +271,7 @@ const sub_save_token_details = async () => {
       if (options["total_liquidity"] < 0) {
         options["rugpull"] = "Yes";
       }
-      let time = moment().subtract(3,'minutes');
+      let time = moment().subtract(10,'minutes');
       let Transactions = await models.transactionModel.findOne({ token: options["token"], createdAt:{$gte:time}})
       if (Transactions && buy_plus_sell > 0) {
         let pre_buy_plus_sell = Transactions["buy_plus_sell"];
