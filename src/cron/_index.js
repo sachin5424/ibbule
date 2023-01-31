@@ -40,29 +40,29 @@ function getRange(per) {
   //console.log({per})
   per = parseInt(per);
 
-  if (per >= 0 && per <= 5) return 1;
-  else if (per > 5 && per <= 10) return 2;
-  else if (per > 10 && per <= 15) return 3;
-  else if (per > 15 && per <= 20) return 4;
-  else if (per > 20 && per <= 25) return 5;
-  else if (per > 25 && per <= 30) return 6;
-  else if (per > 30 && per <= 35) return 7;
-  else if (per > 35 && per <= 40) return 8;
-  else if (per > 40 && per <= 45) return 9;
-  else if (per > 45 && per <= 50) return 10;
-  else if (per > 50) return 11;
+  if (per >= 0 && per <= 3) return 1;
+  else if (per > 4 && per <= 6) return 2;
+  else if (per > 6 && per <= 9) return 3;
+  else if (per > 9 && per <= 12) return 4;
+  else if (per > 12 && per <= 15) return 5;
+  else if (per > 15 && per <= 18) return 6;
+  else if (per > 18 && per <= 21) return 7;
+  else if (per > 21 && per <= 24) return 8;
+  else if (per > 24 && per <= 27) return 9;
+  else if (per > 30 && per <= 33) return 10;
+  else if (per > 33) return 11;
 
-  else if (per >= 0 && per <= -5) return 1;
-  else if (per > -5 && per <= -10) return 2;
-  else if (per > -10 && per <= -15) return 3;
-  else if (per > -15 && per <= -20) return 4;
-  else if (per > -20 && per <= -25) return 5;
-  else if (per > -25 && per <= -30) return 6;
-  else if (per > -30 && per <= -35) return 7;
-  else if (per > -35 && per <= -40) return 8;
-  else if (per > -40 && per <= -45) return 9;
-  else if (per > -45 && per <= -50) return 10;
-  else if (per > -50) return 11;
+  else if (per >=- 0 && per <= -3) return 1;
+  else if (per > -4 && per <= -6) return 2;
+  else if (per > -6 && per <= -9) return 3;
+  else if (per > -9 && per <= -12) return 4;
+  else if (per > -12 && per <= -15) return 5;
+  else if (per > -15 && per <= -18) return 6;
+  else if (per > -18 && per <= -21) return 7;
+  else if (per > -21 && per <= -24) return 8;
+  else if (per > -24 && per <= -27) return 9;
+  else if (per > -30 && per <= -33) return 10;
+  else if (per > -33) return 11;
 
   // else if (per < 0 && per >= -25) return -1;
   // else if (per < -25 && per >= -50) return -2;
