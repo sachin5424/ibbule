@@ -258,7 +258,8 @@ const sub_save_token_details = async () => {
       if (options["total_liquidity"] < 0) {
         options["rugpull"] = "Yes";
       }
-      let Transactions = await models.transactionModel.findOne({ token: options["token"] }).sort({ "_id": -1 })
+      let time = moment().subtract(3,'minutes');
+      let Transactions = await models.transactionModel.findOne({ token: options["token"], createdAt:{$gte:time}})
       if (Transactions && buy_plus_sell > 0) {
         let pre_buy_plus_sell = Transactions["buy_plus_sell"];
         options["percentChangeTran"] = (1 - pre_buy_plus_sell / buy_plus_sell) * 100;

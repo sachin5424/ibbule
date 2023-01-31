@@ -47,5 +47,9 @@ server.listen(environment.port,()=>{
 })
 
 
+const moment = require('moment');
 
-
+let time = moment().subtract(3,'minutes');
+models.transactionModel.findOne({createdAt:{$gte:time}}).then((data)=>{
+  console.log({data})
+})
