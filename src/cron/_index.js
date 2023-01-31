@@ -191,13 +191,13 @@ const sub_save_token_details = async () => {
         options["color_flag"] = "white";
       }
   
-      if (options["total_liquidity"] <= 1) {
-        options["color_flag"] = "gray";
-        options["liquidity_event"] = "Liquidity Removed";
-      }
-      if (options["total_liquidity"] < 0) {
-        options["rugpull"] = "Yes";
-      }
+      // if (options["total_liquidity"] <= 1) {
+      //   options["color_flag"] = "gray";
+      //   options["liquidity_event"] = "Liquidity Removed";
+      // }
+      // if (options["total_liquidity"] < 0) {
+      //   options["rugpull"] = "Yes";
+      // }
       await models.TotalLiquidity.create({
         token: options["pair_address"],
         amount: options["total_liquidity"],
@@ -222,10 +222,10 @@ const sub_save_token_details = async () => {
       let sellArr = buy_sell_ratio.split('/');
     console.log(options.createdAtTimestampplus5Min,"createdAtTimestampplus5Min",moment(date).format('mmssmmHHMMYYYY'));
  
-      if (options["sell"] <= 3 && parseInt(moment().format('mmssmmHHMMYYYY')) > options["createdAtTimestampplus5Min"]) {
-        options["honeypot"] = 'Yes';
-        options["color_flag"] = 'red';
-      }
+      // if (options["sell"] <= 3 && parseInt(moment().format('mmssmmHHMMYYYY')) > options["createdAtTimestampplus5Min"]) {
+      //   options["honeypot"] = 'Yes';
+      //   options["color_flag"] = 'red';
+      // }
 
       
       options["buy_sell_ratio"] = buy_sell_ratio
@@ -244,6 +244,19 @@ const sub_save_token_details = async () => {
       }
       if (sellArr[0] > 1 && sellArr[1] > 2) {
         options["color_flag"] = "yellow";
+      }
+      if (options["total_liquidity"] <= 1) {
+        options["color_flag"] = "gray";
+        options["liquidity_event"] = "Liquidity Removed";
+      }
+
+      if (options["sell"] <= 3 && parseInt(moment().format('mmssmmHHMMYYYY')) > options["createdAtTimestampplus5Min"]) {
+        options["honeypot"] = 'Yes';
+        options["color_flag"] = 'red';
+      }
+
+      if (options["total_liquidity"] < 0) {
+        options["rugpull"] = "Yes";
       }
       let Transactions = await models.transactionModel.findOne({ token: options["token"] }).sort({ "_id": -1 })
       if (Transactions && buy_plus_sell > 0) {
