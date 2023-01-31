@@ -40,29 +40,42 @@ function getRange(per) {
   //console.log({per})
   per = parseInt(per);
 
-  if (per >= 0 && per <= 25) return 1;
-  else if (per > 25 && per <= 50) return 2;
-  else if (per > 50 && per <= 75) return 3;
-  else if (per > 75 && per <= 100) return 4;
-  else if (per > 100 && per <= 125) return 5;
-  else if (per > 125 && per <= 150) return 6;
-  else if (per > 150 && per <= 175) return 7;
-  else if (per > 175 && per <= 200) return 8;
-  else if (per > 200 && per <= 225) return 9;
-  else if (per > 225 && per <= 250) return 10;
-  else if (per > 250) return 11;
-  else if (per < 0 && per >= -25) return -1;
-  else if (per < -25 && per >= -50) return -2;
-  else if (per < -50 && per >= -75) return -3;
-  else if (per < -75 && per >= -100) return -4;
-  else if (per < -100 && per >= -125) return -5;
-  else if (per < -125 && per >= -150) return -6;
-  else if (per < -150 && per >= -175) return -7;
-  else if (per < -175 && per >= -200) return -8;
-  else if (per < -200 && per >= -225) return -9;
-  else if (per < -225 && per >= -250) return -10;
-  else if (per < -250) return -11;
-  else return 15;
+  if (per >= 0 && per <= 5) return 1;
+  else if (per > 5 && per <= 10) return 2;
+  else if (per > 10 && per <= 15) return 3;
+  else if (per > 15 && per <= 20) return 4;
+  else if (per > 20 && per <= 25) return 5;
+  else if (per > 25 && per <= 30) return 6;
+  else if (per > 30 && per <= 35) return 7;
+  else if (per > 35 && per <= 40) return 8;
+  else if (per > 40 && per <= 45) return 9;
+  else if (per > 45 && per <= 50) return 10;
+  else if (per > 50) return 11;
+
+  else if (per >= 0 && per <= -5) return 1;
+  else if (per > -5 && per <= -10) return 2;
+  else if (per > -10 && per <= -15) return 3;
+  else if (per > -15 && per <= -20) return 4;
+  else if (per > -20 && per <= -25) return 5;
+  else if (per > -25 && per <= -30) return 6;
+  else if (per > -30 && per <= -35) return 7;
+  else if (per > -35 && per <= -40) return 8;
+  else if (per > -40 && per <= -45) return 9;
+  else if (per > -45 && per <= -50) return 10;
+  else if (per > -50) return 11;
+
+  // else if (per < 0 && per >= -25) return -1;
+  // else if (per < -25 && per >= -50) return -2;
+  // else if (per < -50 && per >= -75) return -3;
+  // else if (per < -75 && per >= -100) return -4;
+  // else if (per < -100 && per >= -125) return -5;
+  // else if (per < -125 && per >= -150) return -6;
+  // else if (per < -150 && per >= -175) return -7;
+  // else if (per < -175 && per >= -200) return -8;
+  // else if (per < -200 && per >= -225) return -9;
+  // else if (per < -225 && per >= -250) return -10;
+  // else if (per < -250) return -11;
+  // else return 15;
 }
 
 function numberExponentToLarge(numIn) {
